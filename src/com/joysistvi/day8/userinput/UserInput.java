@@ -1,6 +1,5 @@
-package com.joysistvi.day7.userinput;
+package com.joysistvi.day8.userinput;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 public class UserInput {
 
