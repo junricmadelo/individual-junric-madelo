@@ -24,7 +24,7 @@ public class Activity8_Madelo {
         System.out.println("\nSum = " + sum);
         System.out.println("Average = " + average);
 
-        // Stretch goal
+        //
         int highest = numbers[0];
         int lowest = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
