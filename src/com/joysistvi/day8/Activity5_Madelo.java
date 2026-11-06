@@ -43,6 +43,8 @@ public class Activity5_Madelo {
                 System.out.println("    [4] UNLI 5G");
                 System.out.println("    [5] ALLNET");
                 mainChoice = readChoice(sc);
+
+
                 if (mainChoice < 1 || mainChoice > 5) {
                     System.out.println("Invalid choice. Please try again.");
                 }
