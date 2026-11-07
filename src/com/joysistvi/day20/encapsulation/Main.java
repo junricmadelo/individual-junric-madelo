@@ -4,45 +4,37 @@ import java.util.Scanner;
 
 import java.util.function.Consumer;
 
+// Activity 14_Madelo Part 2
+
 public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        UserAccount user = new UserAccount();
 
-        System.out.println("**********************************");
-        System.out.println("*     User Account Registration  *");
-        System.out.println("**********************************");
+        System.out.println("*** User Registration ***");
+        System.out.println("Please enter the details below:");
         System.out.println();
 
-        prompt(scanner, "Enter First Name: ", user::setFirstName);
-        prompt(scanner, "Enter Middle Name: ", user::setMiddleName);
-        prompt(scanner, "Enter Last Name: ", user::setLastName);
-        prompt(scanner, "Enter Address: ", user::setAddress);
-        prompt(scanner, "Enter Email: ", user::setEmail);
-        prompt(scanner, "Enter Password: ", user::setPassword);
+        System.out.print("Enter first name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter middle name: ");
+        String middleName = scanner.nextLine();
+        System.out.print("Enter last name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Enter address: ");
+        String address = scanner.nextLine();
+        System.out.print("Enter email: ");
+        String email = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        UserAccount account = new UserAccount(firstName, middleName, lastName,
+                address, email, password);
 
         System.out.println();
-        System.out.println("--- User Account Created ---");
-        System.out.println("Full Name: " + user.getFullName());
-        System.out.println("Address: " + user.getAddress());
-        System.out.println("Email: " + user.getEmail());
+        System.out.println(account);
 
         scanner.close();
-    }
-
-    // Re-prompts until the setter accepts the value.
-    private static void prompt(Scanner scanner, String label, Consumer<String> setter) {
-        while (true) {
-            System.out.print(label);
-            String input = scanner.nextLine();
-            try {
-                setter.accept(input);
-                return;
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid input: " + e.getMessage());
-            }
-        }
     }
 
 

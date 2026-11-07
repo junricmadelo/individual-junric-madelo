@@ -1,5 +1,6 @@
 package com.joysistvi.day20.encapsulation;
 
+// Activity 14_Madelo Part 2
 import java.util.regex.Pattern;
 
 public class UserAccount {
@@ -16,6 +17,17 @@ public class UserAccount {
     private String password;
 
     public UserAccount() {
+    }
+
+    // Parameterized constructor: calls the setters so every validation rule runs.
+    public UserAccount(String firstName, String middleName, String lastName,
+                       String address, String email, String password) {
+        this.setFirstName(firstName);
+        this.setMiddleName(middleName);
+        this.setLastName(lastName);
+        this.setAddress(address);
+        this.setEmail(email);
+        this.setPassword(password);
     }
 
     // Getters
@@ -50,9 +62,13 @@ public class UserAccount {
         return firstName + " " + middleName + " " + lastName;
     }
 
-    // Setters
+    // Setters: an invalid value prints a message and the field keeps its old value (null if unset).
     public void setFirstName(String firstName) {
-        this.firstName = requireNonBlank(firstName, "First name");
+        if (isBlank(firstName)) {
+            System.out.println("First name must not be empty.");
+            return;
+        }
+        this.firstName = firstName.trim();
     }
 
     public void setMiddleName(String middleName) {
@@ -61,29 +77,37 @@ public class UserAccount {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = requireNonBlank(lastName, "Last name");
+        if (isBlank(lastName)) {
+            System.out.println("Last name must not be empty.");
+            return;
+        }
+        this.lastName = lastName.trim();
     }
 
     public void setAddress(String address) {
-        this.address = requireNonBlank(address, "Address");
+        if (isBlank(address)) {
+            System.out.println("Address must not be empty.");
+            return;
+        }
+        this.address = address.trim();
     }
 
     public void setEmail(String email) {
-        String value = requireNonBlank(email, "Email");
-        if (!EMAIL_PATTERN.matcher(value).matches()) {
-            throw new IllegalArgumentException(
-                    "Email must follow the format name@domain.com.");
+        if (isBlank(email) || !EMAIL_PATTERN.matcher(email.trim()).matches()) {
+            System.out.println("Invalid email format.");
+            return;
         }
-        this.email = value;
+        this.email = email.trim();
     }
 
     public void setPassword(String password) {
         if (password == null || password.length() < MIN_PASSWORD_LENGTH) {
-            throw new IllegalArgumentException(
-                    "Password must be at least " + MIN_PASSWORD_LENGTH + " characters long.");
+            System.out.println("Password must be at least " + MIN_PASSWORD_LENGTH + " characters long.");
+            return;
         }
         if (password.contains(" ")) {
-            throw new IllegalArgumentException("Password must not contain spaces.");
+            System.out.println("Password must not contain spaces.");
+            return;
         }
         boolean hasLetter = false;
         boolean hasDigit = false;
@@ -95,16 +119,22 @@ public class UserAccount {
             }
         }
         if (!hasLetter || !hasDigit) {
-            throw new IllegalArgumentException(
-                    "Password must contain at least one letter and one number.");
+            System.out.println("Password must contain at least one letter and one number.");
+            return;
         }
         this.password = password;
     }
 
-    private String requireNonBlank(String value, String fieldName) {
-        if (value == null || value.trim().isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " must not be empty.");
-        }
-        return value.trim();
+    private boolean isBlank(String value) {
+        return value == null || value.trim().isEmpty();
+    }
+
+    // The password is left out on purpose.
+    @Override
+    public String toString() {
+        return "=== Account Details ===\n"
+                + "Full Name: " + getFullName() + "\n"
+                + "Email: " + email + "\n"
+                + "Address: " + address;
     }
 }
