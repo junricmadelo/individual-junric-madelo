@@ -1,8 +1,6 @@
 package com.joysistvi.day24.abstraction.Activity17_Madelo;
 
-import com.joysistvi.day23.polymorphism.Activity16_Madelo.Pen;
-
-public class Marker extends Pen {
+public class Marker extends Pen implements Refillable {
 
     private boolean permanent;
 

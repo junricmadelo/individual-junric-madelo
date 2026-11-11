@@ -1,10 +1,11 @@
 package com.joysistvi.day24.abstraction.Activity17_Madelo;
 
-public class Pen {
+public abstract class Pen {
 
     private String brand;
     private String color;
     private double weightInGrams;
+
 
     public Pen(String brand, String color, double weightInGrams) {
         this.brand = brand;
@@ -36,18 +37,15 @@ public class Pen {
         this.weightInGrams = weightInGrams;
     }
 
-    public void write() {
-        System.out.println("Writing with a pen.");
+
+    public abstract void write();
+
+
+    public void store() {
+        System.out.println("Storing the pen in the pencil case.");
     }
 
-    // Part 1: ino-override sa mga child class
-
-    public void refill() {
-        System.out.println("Refilling the pen.");
-    }
-
-    // Part 2: overloaded methods (not override sa mga child class)
-
+    // Overloaded methods (not override sa mga child class)
     public void write(String text) {
         System.out.println("Writing \"" + text + "\" with a pen.");
     }

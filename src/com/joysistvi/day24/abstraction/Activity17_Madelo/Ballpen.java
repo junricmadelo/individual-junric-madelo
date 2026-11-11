@@ -1,8 +1,6 @@
 package com.joysistvi.day24.abstraction.Activity17_Madelo;
 
-import com.joysistvi.day23.polymorphism.Activity16_Madelo.Pen;
-
-public class Ballpen extends Pen {
+public class Ballpen extends Pen implements Refillable, Clickable {
 
     private double pointSize;
 
@@ -27,6 +25,11 @@ public class Ballpen extends Pen {
     @Override
     public void refill() {
         System.out.println("Replacing the ballpen ink refill.");
+    }
+
+    @Override
+    public void click() {
+        System.out.println(CLICK_SOUND + " The ballpen tip comes out.");
     }
 
     @Override
