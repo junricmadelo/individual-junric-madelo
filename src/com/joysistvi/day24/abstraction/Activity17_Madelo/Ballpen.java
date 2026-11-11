@@ -1,4 +1,6 @@
-package com.joysistvi.day23.polymorphism.Activity;
+package com.joysistvi.day24.abstraction.Activity17_Madelo;
+
+import com.joysistvi.day23.polymorphism.Activity16_Madelo.Pen;
 
 public class Ballpen extends Pen {
 
@@ -20,6 +22,11 @@ public class Ballpen extends Pen {
     @Override
     public void write() {
         System.out.println("Writing smoothly with a ballpen.");
+    }
+
+    @Override
+    public void refill() {
+        System.out.println("Replacing the ballpen ink refill.");
     }
 
     @Override

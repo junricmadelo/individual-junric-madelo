@@ -1,4 +1,6 @@
-package com.joysistvi.day23.polymorphism.Activity;
+package com.joysistvi.day24.abstraction.Activity17_Madelo;
+
+import com.joysistvi.day23.polymorphism.Activity16_Madelo.Pen;
 
 public class Marker extends Pen {
 
@@ -20,6 +22,11 @@ public class Marker extends Pen {
     @Override
     public void write() {
         System.out.println("Writing boldly with a marker.");
+    }
+
+    @Override
+    public void refill() {
+        System.out.println("Refilling the marker ink.");
     }
 
     @Override

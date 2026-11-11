@@ -1,50 +1,14 @@
-package com.joysistvi.day23.polymorphism.Activity;
+package com.joysistvi.day24.abstraction.abstractclass;
 
 public class Main {
 
     public static void main(String[] args) {
+        Animal animal = new Animal("Generic Animal", 3) {
+            @Override
+            public void makeSound() {
 
-        Ballpen ballpen = new Ballpen("Pilot", "Black", 20, 1);
-        Marker marker = new Marker("Pentel", "Red", 35, true);
-
-        System.out.println("=== Ballpen ===");
-        System.out.println(ballpen);
-        ballpen.write();
-
-        System.out.println();
-
-        System.out.println("=== Marker ===");
-        System.out.println(marker);
-        marker.write();
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-public class Main {
-
-    public static void main(String[] args) {
-        Animal animal = new Animal("Generic Animal", 3);
+            }
+        };
         Cat cat = new Cat("Mingming", 2, "White");
         Dog dog = new Dog("Bantay", 3, "Aspin");
 
@@ -64,7 +28,8 @@ public class Main {
         cat.eat(); // inherited from Animal
         cat.makeSound(); // overriden in Cat
         cat.scratch(); // only Cat has this
+
     }
 }
- */
+
 

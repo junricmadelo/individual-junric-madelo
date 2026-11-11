@@ -27,7 +27,6 @@ public class Main {
         cat.makeSound(); // overriden in Cat
         cat.scratch(); // only Cat has this
 
-        Animal dog = new Dog("Bantay", 5, "Aspin");
     }
 }
 
