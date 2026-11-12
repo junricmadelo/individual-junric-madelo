@@ -1,8 +1,9 @@
-package com.joysistvi.day25.collectionsframework;
+package com.joysistvi.day25;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class ArrayListCrud {
 
@@ -68,5 +69,8 @@ public class ArrayListCrud {
         // indexOf()
         System.out.println(colors.indexOf("White")); // return the first occurrence
         System.out.println(colors.lastIndexOf("White")); //  // return the last occurrence
+
+        Random random = new Random();
+        System.out.println(random.nextBoolean());
     }
 }
