@@ -1,9 +1,9 @@
-package com.joysistvi.day25;
+package com.joysistvi.day25.Activity18_Madelo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Activity18_Madelo {
+public class TodoManager {
 
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<String> tasks = new ArrayList<>();
@@ -22,9 +22,9 @@ public class Activity18_Madelo {
         }
     }
 
-    // Displays the menu and returns the user's choice
     public static int showMenu() {
-        System.out.println("\n--- Todo Manager Menu ---");
+        System.out.println();
+        System.out.println("--- Todo Manager Menu ---");
         System.out.println("1. Add a task");
         System.out.println("2. View all tasks");
         System.out.println("3. Update a task");
@@ -53,12 +53,10 @@ public class Activity18_Madelo {
 
     public static void updateTask() {
         int number = getInput("Enter the task number to update: ");
-
         if (number < 1 || number > tasks.size()) {
             System.out.println("Invalid task number.");
             return;
         }
-
         System.out.print("Enter the new task: ");
         String newTask = scanner.nextLine().trim();
         tasks.set(number - 1, newTask);
@@ -67,12 +65,10 @@ public class Activity18_Madelo {
 
     public static void removeTask() {
         int number = getInput("Enter the task number to remove: ");
-
         if (number < 1 || number > tasks.size()) {
             System.out.println("Invalid task number.");
             return;
         }
-
         tasks.remove(number - 1);
         System.out.println("Task removed.");
     }
@@ -83,10 +79,10 @@ public class Activity18_Madelo {
     }
 
     public static void main(String[] args) {
-        boolean running = true;
+        int choice;
 
-        while (running) {
-            int choice = showMenu();
+        do {
+            choice = showMenu();
 
             switch (choice) {
                 case 1:
@@ -106,12 +102,13 @@ public class Activity18_Madelo {
                     break;
                 case 0:
                     System.out.println("Exiting TodoManager. Goodbye!");
-                    running = false;
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-        }
+        } while (choice != 0);
+
+        scanner.close();
     }
 
 
